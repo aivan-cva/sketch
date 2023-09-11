@@ -1,13 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>🖌️Etch-a-sketch🖌️</title>
   </head>
   <body>
-    <div id="app"></div>
+    <h1 class="title">Etch-a-Sketch</h1>
+    <div class="frame">
+      <div class="side-menu">
+        <input type="color" class="color-picker" />
+        <button class="random-color"></button>
+        <button class="shader"></button>
+        <button class="clear-grid">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <button class="download">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="sketch-container">
+        <div class="sketch"></div>
+      </div>
+      <div class="slider-container">
+        <input
+          orient="vertical"
+          class="slider"
+          type="range"
+          name="grid-size"
+          id="grid-size-input"
+          min="4"
+          max="100"
+        />
+      </div>
+    </div>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
