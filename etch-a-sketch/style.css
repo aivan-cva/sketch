@@ -45,7 +45,7 @@ body {
 
 .frame {
   width: 900px;
-  height: 550px;
+  height: 600px;
   background-color: var(--complementary-dark);
   border-radius: 16px;
   display: flex;
@@ -56,8 +56,8 @@ body {
 
 .sketch-container {
   background-color: var(--primary);
-  width: 650px;
-  height: 450px;
+  width: 550px;
+  height: 550px;
   border-radius: 16px;
   display: flex;
   justify-content: center;
@@ -65,9 +65,15 @@ body {
 }
 
 .sketch {
-  width: 600px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background-color: #fff;
+
+  display: grid;
+}
+
+.pixel {
+  border: 1px solid hsla(183, 98%, 22%, 0.1);
 }
 
 .side-menu {
@@ -93,7 +99,7 @@ body {
 .color-picker::-webkit-color-swatch {
   border-radius: 8px;
   border: 4px solid var(--secondary);
-  box-shadow: 4px 4px 8px black;
+  box-shadow: 2px 3px 8px darkolivegreen;
 }
 
 button {
@@ -102,7 +108,7 @@ button {
   height: 50px;
   border: 4px solid var(--secondary);
   cursor: pointer;
-  box-shadow: 4px 4px 8px black;
+  box-shadow: 2px 3px 8px darkolivegreen;
 }
 
 button:hover,

@@ -11,8 +11,8 @@
     <h1 class="title">Etch-a-Sketch</h1>
     <div class="frame">
       <div class="side-menu">
-        <input type="color" class="color-picker" />
-        <button class="random-color"></button>
+        <input type="color" id="colorPicker" class="color-picker" />
+        <button class="random-color" id="random-color"></button>
         <button class="shader"></button>
         <button class="clear-grid">
           <svg
@@ -48,10 +48,11 @@
         </button>
       </div>
       <div class="sketch-container">
-        <div class="sketch"></div>
+        <div class="sketch" id="sketch"></div>
       </div>
       <div class="slider-container">
         <input
+          value="20"
           orient="vertical"
           class="slider"
           type="range"
