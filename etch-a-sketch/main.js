@@ -1,6 +1,16 @@
 let brush = "#000000";
 let sizeVal = 20;
+
+let grid = [];
+
 const sliderInput = document.getElementById("grid-size-input");
+const sketchCanvas = document.getElementById("sketch");
+
+sketchCanvas.addEventListener("mousedown", (event) => {
+  if (event.type === "mousedown") {
+    console.log(event.type);
+  }
+});
 
 sliderInput.addEventListener("change", (event) => {
   sizeVal = event.target.value;
@@ -20,18 +30,49 @@ const randomColor = () => {
 
 const randomBtn = document.getElementById("random-color");
 randomBtn.addEventListener("click", () => {
-  brush = randomColor();
+  console.log("random");
+  grid.forEach((pixel) => {
+    pixel.addEventListener("mouseover", (event) => {
+      brush = randomColor();
+      event.target.style = `background-color : ${brush}`;
+    });
+  });
+});
+
+const shaderBtn = document.getElementById("shader");
+shaderBtn.addEventListener("click", () => {
+  console.log("shader");
+
+  grid.forEach((pixel) => {
+    let shade = 100;
+    pixel.addEventListener("mouseover", (event) => {
+      shade -= 10;
+
+      event.target.style = `background : hsl(0,0%,${shade}%)`;
+    });
+  });
+});
+
+const clearBtn = document.getElementById("clear");
+clearBtn.addEventListener("click", () => {
+  brush = "#000";
   createPixels(sizeVal);
-  console.log("randm color", brush);
 });
 
 const colorPicker = document.getElementById("colorPicker");
-colorPicker.addEventListener("change", (event) => {
-  brush = event.target.value;
+colorPicker.addEventListener("input", (event) => {
+  console.log("input");
+  let color = event.target.value;
+
+  grid.forEach((pixel) => {
+    pixel.addEventListener("mouseover", (event) => {
+      brush = color;
+      event.target.style = `background-color : ${brush}`;
+    });
+  });
 });
 
 const createPixels = (size) => {
-  const sketchCanvas = document.getElementById("sketch");
   sketchCanvas.innerHTML = "";
   sketchCanvas.style.gridTemplateColumns = `repeat(${size}, 1fr`;
   sketchCanvas.style.gridTemplateRows = `repeat(${size} , 1fr)`;
@@ -39,11 +80,13 @@ const createPixels = (size) => {
   for (let index = 0; index < size * size; index++) {
     const pixel = document.createElement("div");
     pixel.classList.add("pixel");
-    pixel.addEventListener("click", (event) => {
+    pixel.addEventListener("mouseover", (event) => {
       event.target.style = `background-color : ${brush}`;
     });
     sketchCanvas.appendChild(pixel);
   }
+
+  grid = sketchCanvas.childNodes;
 };
 
 createPixels(sizeVal);
